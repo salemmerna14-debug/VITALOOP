@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  vitaioop-app:
+    build: .
+    container_name: vitaioop-space-health
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./dev.db
+      - NEXTAUTH_SECRET=vitaioop-super-secure-jwt-session-secret-artemis-iii-2026
+      - BRACELET_API_KEY=vitaioop-bracelet-demo-key-998877
+    volumes:
+      - ./prisma/dev.db:/app/dev.db
+
